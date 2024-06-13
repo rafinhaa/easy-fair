@@ -1,8 +1,14 @@
 {
   "expo": {
-    "name": "feira-facil",
+    "name": "Feira Fácil",
     "slug": "feira-facil",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "ios": {
+      "bundleIdentifier": "cyou.codedev.easyfair"
+    },
+    "android": {
+      "package": "cyou.codedev.easyfair"
+    }
   },
-  "name": "feira-facil"
+  "name": "Feira Fácil"
 }

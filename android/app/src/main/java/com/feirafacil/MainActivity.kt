@@ -1,4 +1,4 @@
-package com.feirafacil
+package cyou.codedev.easyfair
 
 import android.os.Build
 import android.os.Bundle
