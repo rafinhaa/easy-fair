@@ -1,13 +1,13 @@
 import { render, screen } from "@testing-library/react-native"
 
+import { default as resources } from "@/locales/resources/pt-BR.json"
+
 import App from "./App"
 
 describe("App", () => {
   it("should render", () => {
     render(<App />)
 
-    expect(
-      screen.getByText("Open up App.js to start working on your app!"),
-    ).toBeTruthy()
+    expect(screen.getByText(resources["startingMessage"])).toBeTruthy()
   })
 })
