@@ -15,3 +15,11 @@ jest.mock("react-i18next", () => ({
     },
   }),
 }))
+
+jest.mock("@expo/vector-icons/MaterialCommunityIcons", () => {
+  const { Text } = require("react-native")
+  return {
+    __esModule: true,
+    default: Text,
+  }
+})
