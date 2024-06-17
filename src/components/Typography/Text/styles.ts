@@ -36,6 +36,9 @@ export const stylesheet = createStyleSheet((theme) => ({
         default: {
           fontWeight: theme.weights.light,
         },
+        medium: {
+          fontWeight: theme.weights.medium,
+        },
         bold: {
           fontWeight: theme.weights.bold,
         },
