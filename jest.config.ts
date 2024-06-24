@@ -1,5 +1,6 @@
 export default {
   preset: "jest-expo",
+  setupFiles: ["./node_modules/react-native-gesture-handler/jestSetup.js"],
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   cacheDirectory: ".cache/jest",
   transformIgnorePatterns: [

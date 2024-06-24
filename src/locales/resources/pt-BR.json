@@ -3,5 +3,8 @@
   "fairCard": {
     "item": "item",
     "itens": "itens"
+  },
+  "fairItem": {
+    "delete": "Deletar"
   }
 }
