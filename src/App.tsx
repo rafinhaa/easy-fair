@@ -5,10 +5,12 @@ import {
   Roboto_900Black,
   useFonts,
 } from "@expo-google-fonts/roboto"
+import { SQLiteProvider } from "expo-sqlite"
 import React from "react"
 import { GestureHandlerRootView } from "react-native-gesture-handler"
 
 import Loading from "./components/Loading"
+import { initializeDatabase } from "./database/initializeDatabase"
 import { Routes } from "./routes"
 
 export default function App() {
@@ -22,8 +24,10 @@ export default function App() {
   if (!fontsLoaded) return <Loading />
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <Routes />
-    </GestureHandlerRootView>
+    <SQLiteProvider databaseName="easy-fair.db" onInit={initializeDatabase}>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <Routes />
+      </GestureHandlerRootView>
+    </SQLiteProvider>
   )
 }
