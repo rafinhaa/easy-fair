@@ -8,6 +8,7 @@ import {
 import React from "react"
 import { GestureHandlerRootView } from "react-native-gesture-handler"
 
+import Loading from "./components/Loading"
 import { Routes } from "./routes"
 
 export default function App() {
@@ -18,7 +19,7 @@ export default function App() {
     Roboto_900Black,
   })
 
-  if (!fontsLoaded) return null
+  if (!fontsLoaded) return <Loading />
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
