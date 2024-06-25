@@ -8,7 +8,8 @@
     },
     "android": {
       "package": "cyou.codedev.easyfair"
-    }
+    },
+    "plugins": ["expo-font"]
   },
   "name": "Feira Fácil"
 }

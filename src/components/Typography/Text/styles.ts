@@ -2,7 +2,6 @@ import { createStyleSheet } from "react-native-unistyles"
 
 export const stylesheet = createStyleSheet((theme) => ({
   text: {
-    fontWeight: theme.weights.black,
     variants: {
       size: {
         xs: {
@@ -33,20 +32,20 @@ export const stylesheet = createStyleSheet((theme) => ({
         },
       },
       weight: {
-        default: {
-          fontWeight: theme.weights.light,
+        light: {
+          fontFamily: theme.fontFamily.light,
         },
-        medium: {
-          fontWeight: theme.weights.medium,
+        regular: {
+          fontFamily: theme.fontFamily.regular,
         },
         bold: {
-          fontWeight: theme.weights.bold,
+          fontFamily: theme.fontFamily.bold,
         },
         black: {
-          fontWeight: theme.weights.black,
+          fontFamily: theme.fontFamily.black,
         },
-        light: {
-          fontWeight: theme.weights.light,
+        default: {
+          fontFamily: theme.fontFamily.regular,
         },
       },
     },

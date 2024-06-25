@@ -6,7 +6,7 @@ import { stylesheet } from "./styles"
 type TextProps = RNTextProps & {
   size?: "sm" | "lg" | "md" | "xs"
   color?: "opaque" | "primary"
-  weight?: "black" | "light" | "bold" | "medium"
+  weight?: "black" | "light" | "bold" | "regular"
 }
 
 const Text = ({ children, size, color, weight, style, ...rest }: TextProps) => {

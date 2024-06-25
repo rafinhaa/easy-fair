@@ -40,7 +40,7 @@ describe("Title", () => {
       render(<Title>Olá, mundo!</Title>)
 
       expect(screen.getByText("Olá, mundo!")).toHaveStyle({
-        fontWeight: "900",
+        fontFamily: "Roboto_700Bold",
       })
     })
   })

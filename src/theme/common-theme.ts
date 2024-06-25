@@ -47,4 +47,10 @@ export default {
     extrabold: "800",
     black: "900",
   },
+  fontFamily: {
+    light: "Roboto_300Light",
+    regular: "Roboto_400Regular",
+    bold: "Roboto_700Bold",
+    black: "Roboto_900Black",
+  },
 } as const

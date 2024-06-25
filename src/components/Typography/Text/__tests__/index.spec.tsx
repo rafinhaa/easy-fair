@@ -66,7 +66,7 @@ describe("Text", () => {
       render(<Text weight="black">Olá, mundo!</Text>)
 
       expect(screen.getByText("Olá, mundo!")).toHaveStyle({
-        fontWeight: "900",
+        fontFamily: "Roboto_900Black",
       })
     })
 
@@ -74,7 +74,7 @@ describe("Text", () => {
       render(<Text weight="light">Olá, mundo!</Text>)
 
       expect(screen.getByText("Olá, mundo!")).toHaveStyle({
-        fontWeight: "300",
+        fontFamily: "Roboto_300Light",
       })
     })
 
@@ -82,7 +82,7 @@ describe("Text", () => {
       render(<Text weight="bold">Olá, mundo!</Text>)
 
       expect(screen.getByText("Olá, mundo!")).toHaveStyle({
-        fontWeight: "700",
+        fontFamily: "Roboto_700Bold",
       })
     })
   })
