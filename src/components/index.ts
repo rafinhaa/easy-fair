@@ -8,3 +8,8 @@ export { default as Check } from "@/components/Check"
 export { default as FairItem } from "@/components/FairItem"
 export { default as Loading } from "@/components/Loading"
 export { default as FloatingButton } from "@/components/FloatingButton"
+export {
+  default as BottomSheet,
+  BottomSheetProps,
+  BottomSheetRef,
+} from "@/components/BottomSheet"

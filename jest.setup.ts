@@ -23,3 +23,19 @@ jest.mock("@expo/vector-icons/MaterialCommunityIcons", () => {
     default: Text,
   }
 })
+
+jest.mock("@gorhom/bottom-sheet", () => {
+  const reactNative = jest.requireActual("react-native")
+  const { View } = reactNative
+
+  return {
+    __esModule: true,
+    default: View,
+    BottomSheetModal: View,
+    BottomSheetModalProvider: View,
+    useBottomSheetModal: () => ({
+      present: () => {},
+      dismiss: () => {},
+    }),
+  }
+})
