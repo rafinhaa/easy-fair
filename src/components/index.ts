@@ -13,3 +13,7 @@ export {
   BottomSheetProps,
   BottomSheetRef,
 } from "@/components/BottomSheet"
+export {
+  default as GlobalAlertDialog,
+  AlertDialog,
+} from "@/components/AlertDialog"
