@@ -17,3 +17,4 @@ export {
   default as GlobalAlertDialog,
   AlertDialog,
 } from "@/components/AlertDialog"
+export { default as Spacer } from "./Spacer"
