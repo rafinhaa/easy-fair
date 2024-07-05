@@ -4,6 +4,8 @@ export const stylesheet = createStyleSheet((theme) => ({
   button: {
     padding: theme.spacing.sm,
     borderRadius: theme.radius.md,
+    alignItems: "center",
+    justifyContent: "center",
     variants: {
       variant: {
         default: {

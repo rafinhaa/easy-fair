@@ -8,6 +8,7 @@ import {
 import { SQLiteProvider } from "expo-sqlite"
 import React from "react"
 import { GestureHandlerRootView } from "react-native-gesture-handler"
+import { SafeAreaProvider } from "react-native-safe-area-context"
 
 import { GlobalAlertDialog, Loading } from "@/components"
 
@@ -27,8 +28,10 @@ export default function App() {
   return (
     <SQLiteProvider databaseName="easy-fair.db" onInit={initializeDatabase}>
       <GestureHandlerRootView style={{ flex: 1 }}>
-        <Routes />
-        <GlobalAlertDialog />
+        <SafeAreaProvider>
+          <Routes />
+          <GlobalAlertDialog />
+        </SafeAreaProvider>
       </GestureHandlerRootView>
     </SQLiteProvider>
   )

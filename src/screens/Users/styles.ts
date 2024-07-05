@@ -2,14 +2,14 @@ import { createStyleSheet } from "react-native-unistyles"
 
 export const stylesheet = createStyleSheet((theme) => ({
   container: {
-    position: "absolute",
-    bottom: 60,
-    right: 50,
-    width: 54,
-    height: 54,
-    borderRadius: theme.radius.md,
+    flex: 1,
+    paddingHorizontal: theme.spacing.sm,
+    backgroundColor: theme.colors.background,
+  },
+  emptyList: {
+    flexGrow: 1,
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: theme.colors.primary,
   },
 }))

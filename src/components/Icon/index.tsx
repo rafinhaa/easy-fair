@@ -9,7 +9,7 @@ type RestProps = Omit<
 >
 
 export type IconProps = RestProps & {
-  size?: keyof typeof commonTheme.fontSize
+  size?: keyof typeof commonTheme.fontSize | number
   variant?: "primary" | "secondary"
 }
 
@@ -21,13 +21,10 @@ const Icon = ({ size = "xl", variant = "primary", ...rest }: IconProps) => {
     secondary: theme.text.default,
   }[variant]
 
+  const sizes = typeof size === "number" ? size : theme.fontSize[size]
+
   return (
-    <MCIcon
-      {...rest}
-      size={theme.fontSize[size]}
-      color={color}
-      testID={`${rest.name}-icon`}
-    />
+    <MCIcon {...rest} size={sizes} color={color} testID={`${rest.name}-icon`} />
   )
 }
 

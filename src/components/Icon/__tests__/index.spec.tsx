@@ -25,5 +25,11 @@ describe("Icon", () => {
 
       expect(screen.getByTestId("calendar-icon")).toHaveProp("size", 16)
     })
+
+    it("should render size numeric", () => {
+      render(<Icon name={"calendar"} size={24} />)
+
+      expect(screen.getByTestId("calendar-icon")).toHaveProp("size", 24)
+    })
   })
 })

@@ -19,7 +19,8 @@ const BottomSheet = (
   {
     children,
     snapPoints,
-    style: containerStyle,
+    style,
+    containerStyle,
     backgroundStyle,
     initializeOpened = false,
     ...rest
@@ -43,7 +44,8 @@ const BottomSheet = (
     <GHBottomSheet
       ref={bottomSheetRef}
       snapPoints={customSnapPoints}
-      style={[styles.container, containerStyle]}
+      style={[styles.bottomSheet, style]}
+      containerStyle={[containerStyle]}
       backgroundStyle={[styles.backgroundStyle, backgroundStyle]}
       backdropComponent={BottomSheetBackdrop}
       {...rest}
