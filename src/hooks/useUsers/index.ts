@@ -23,7 +23,7 @@ export const useUsers = () => {
     }
   }
 
-  const findById = async (id: string) => {
+  const findById = async (id: number) => {
     const statement = await database.prepareAsync(
       "SELECT * FROM users WHERE id = $id",
     )

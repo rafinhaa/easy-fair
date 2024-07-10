@@ -3,7 +3,8 @@
     "cancel": "Cancelar",
     "save": "Salvar",
     "remove": "Remover",
-    "delete": "Deletar"
+    "delete": "Deletar",
+    "Hello": "Ola"
   },
   "fairCard": {
     "item": "item",
@@ -25,5 +26,10 @@
       "title": "Remover Usuário",
       "description": "Tem certeza que deseja remover este usuário?"
     }
+  },
+  "home": {
+    "welcome": "Bem-vindo ao FeiraFácil!",
+    "description": "Organize suas idas à feira com facilidade. Crie listas de compras, planeje suas feiras e mantenha tudo sob controle. Vamos começar?",
+    "createNewList": "Criar nova lista"
   }
 }

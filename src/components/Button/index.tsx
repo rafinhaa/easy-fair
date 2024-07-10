@@ -7,11 +7,16 @@ type ButtonProps = TouchableOpacityProps & {
   variant?: "primary" | "secondary"
 }
 
-const Button = ({ children, variant, ...rest }: ButtonProps) => {
+const Button = ({
+  children,
+  variant,
+  style: containerStyle,
+  ...rest
+}: ButtonProps) => {
   const { styles } = useStyles(stylesheet, { variant })
 
   return (
-    <TouchableOpacity style={styles.button} {...rest}>
+    <TouchableOpacity style={[styles.button, containerStyle]} {...rest}>
       {children}
     </TouchableOpacity>
   )

@@ -6,6 +6,7 @@ export const stylesheet = createStyleSheet((theme) => ({
     borderRadius: theme.radius.md,
     alignItems: "center",
     justifyContent: "center",
+    height: 54,
     variants: {
       variant: {
         default: {

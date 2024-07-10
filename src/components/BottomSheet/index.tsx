@@ -18,7 +18,7 @@ export type BottomSheetRef = BottomSheetMethods & {
 const BottomSheet = (
   {
     children,
-    snapPoints,
+    snapPoints = ["50%"],
     style,
     containerStyle,
     backgroundStyle,

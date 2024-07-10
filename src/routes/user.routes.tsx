@@ -23,7 +23,8 @@ type Props = BottomTabScreenProps<UserRoutesParamList>
 
 type UserRoutesScreenNavigationProp = Props["navigation"]
 
-type UserRoutesScreenRouteProp = Props["route"]
+type UserRoutesScreenRouteProp<RouteName extends keyof UserRoutesParamList> =
+  BottomTabScreenProps<UserRoutesParamList, RouteName>["route"]
 
 type UserRoutesNavigatorScreenParams =
   NavigatorScreenParams<UserRoutesParamList>

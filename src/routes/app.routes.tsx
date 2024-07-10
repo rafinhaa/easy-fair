@@ -18,7 +18,8 @@ type Props = StackScreenProps<AppRoutesParamList>
 
 type AppRoutesScreenNavigationProp = Props["navigation"]
 
-type AppRoutesScreenRouteProp = Props["route"]
+type AppRoutesScreenRouteProp<RouteName extends keyof AppRoutesParamList> =
+  StackScreenProps<AppRoutesParamList, RouteName>["route"]
 
 type AppRoutesNavigatorScreenParams = NavigatorScreenParams<AppRoutesParamList>
 
