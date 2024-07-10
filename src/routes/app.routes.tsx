@@ -1,7 +1,9 @@
 import { NavigatorScreenParams } from "@react-navigation/native"
 import { createStackNavigator, StackScreenProps } from "@react-navigation/stack"
+import { useMMKVNumber } from "react-native-mmkv"
 
 import Users from "@/screens/Users"
+import { storageKeys } from "@/storage/storage-keys"
 
 import * as UserRoutes from "./user.routes"
 
@@ -21,15 +23,26 @@ type AppRoutesScreenRouteProp = Props["route"]
 type AppRoutesNavigatorScreenParams = NavigatorScreenParams<AppRoutesParamList>
 
 export const AppRoutes = () => {
+  const [userId] = useMMKVNumber(storageKeys.USER_ID)
+
+  const initialRouteName: keyof AppRoutesParamList = userId ? "User" : "Users"
+
   return (
     <Navigator
       screenOptions={{
         headerShown: false,
       }}
+      initialRouteName={initialRouteName}
     >
       <Screen name="Users" component={Users} />
 
-      <Screen name="User" component={UserRoutes.UserRoutes} />
+      {userId && (
+        <Screen
+          name="User"
+          component={UserRoutes.UserRoutes}
+          initialParams={{ screen: "Home", params: { userId } }}
+        />
+      )}
     </Navigator>
   )
 }

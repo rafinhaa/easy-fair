@@ -19,6 +19,7 @@ import {
 } from "@/components"
 import { useUsers } from "@/hooks/useUsers"
 import { AppRoutesScreenNavigationProp } from "@/routes"
+import { storage } from "@/storage"
 
 import UserCard from "./components/UserCard"
 import { stylesheet } from "./styles"
@@ -55,7 +56,9 @@ const Users = () => {
     })
   }
 
-  const handlePressSelectUser = (id: number) => {
+  const handlePressSelectUser = async (id: number) => {
+    await storage.setItem("USER_ID", id)
+
     replace("User", {
       screen: "Home",
       params: { userId: id },

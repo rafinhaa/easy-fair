@@ -11,9 +11,12 @@ import { GestureHandlerRootView } from "react-native-gesture-handler"
 import { SafeAreaProvider } from "react-native-safe-area-context"
 
 import { GlobalAlertDialog, Loading } from "@/components"
+import { initializeStorage, storages } from "@/storage"
 
 import { initializeDatabase } from "./database/initializeDatabase"
 import { Routes } from "./routes"
+
+initializeStorage(storages.MMKVStorage)
 
 export default function App() {
   const [fontsLoaded] = useFonts({
