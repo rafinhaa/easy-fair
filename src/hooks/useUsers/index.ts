@@ -23,19 +23,22 @@ export const useUsers = () => {
     }
   }
 
-  const findById = async (id: number) => {
-    const statement = await database.prepareAsync(
-      "SELECT * FROM users WHERE id = $id",
-    )
-    try {
-      const result = await statement.executeAsync<User>({ $id: id })
-      return result.getFirstAsync()
-    } catch (error) {
-      throw error
-    } finally {
-      await statement.finalizeAsync()
-    }
-  }
+  const findById = useCallback(
+    async (id: number) => {
+      const statement = await database.prepareAsync(
+        "SELECT * FROM users WHERE id = $id",
+      )
+      try {
+        const result = await statement.executeAsync<User>({ $id: id })
+        return result.getFirstAsync()
+      } catch (error) {
+        throw error
+      } finally {
+        await statement.finalizeAsync()
+      }
+    },
+    [database],
+  )
 
   const findAll = useCallback(async () => {
     const query = "SELECT * FROM users ORDER BY name"

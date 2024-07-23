@@ -5,11 +5,11 @@ import { useMMKVNumber } from "react-native-mmkv"
 import Users from "@/screens/Users"
 import { storageKeys } from "@/storage/storage-keys"
 
-import * as UserRoutes from "./user.routes"
+import * as HomeRoutes from "./home.routes"
 
 type AppRoutesParamList = {
   Users: undefined
-  User: UserRoutes.UserRoutesNavigatorScreenParams
+  Signed: HomeRoutes.HomeRoutesNavigatorScreenParams
 }
 
 const { Navigator, Screen } = createStackNavigator<AppRoutesParamList>()
@@ -26,7 +26,7 @@ type AppRoutesNavigatorScreenParams = NavigatorScreenParams<AppRoutesParamList>
 export const AppRoutes = () => {
   const [userId] = useMMKVNumber(storageKeys.USER_ID)
 
-  const initialRouteName: keyof AppRoutesParamList = userId ? "User" : "Users"
+  const initialRouteName: keyof AppRoutesParamList = userId ? "Signed" : "Users"
 
   return (
     <Navigator
@@ -37,13 +37,19 @@ export const AppRoutes = () => {
     >
       <Screen name="Users" component={Users} />
 
-      {userId && (
-        <Screen
-          name="User"
-          component={UserRoutes.UserRoutes}
-          initialParams={{ screen: "Home", params: { userId } }}
-        />
-      )}
+      <Screen
+        name="Signed"
+        component={HomeRoutes.HomeRoutes}
+        initialParams={{
+          screen: "User",
+          params: {
+            screen: "Home",
+            params: {
+              userId,
+            },
+          },
+        }}
+      />
     </Navigator>
   )
 }

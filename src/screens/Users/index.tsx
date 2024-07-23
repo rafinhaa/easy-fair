@@ -59,9 +59,9 @@ const Users = () => {
   const handlePressSelectUser = async (id: number) => {
     await storage.setItem("USER_ID", id)
 
-    replace("User", {
-      screen: "Home",
-      params: { userId: id },
+    replace("Signed", {
+      screen: "User",
+      params: { screen: "Home", params: { userId: id } },
     })
   }
 
