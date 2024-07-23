@@ -5,7 +5,13 @@ import { default as resources } from "@/locales/resources/pt-BR.json"
 import FairItem, { FairItemProps } from ".."
 
 const data: FairItemProps["data"] = {
-  title: "Olá, mundo!",
+  name: "Olá, mundo!",
+  id: 1,
+  fairId: 1,
+  completed: false,
+  createdAt: "2020-01-01T00:00:00.000Z",
+  updatedAt: "2020-01-01T00:00:00.000Z",
+  deletedAt: "2020-01-01T00:00:00.000Z",
 }
 
 describe("FairItem", () => {
@@ -14,7 +20,7 @@ describe("FairItem", () => {
 
     expect(screen.getByText(resources.fairItem.delete)).toBeTruthy()
     expect(screen.getByRole("checkbox")).toBeTruthy()
-    expect(screen.getByText(data.title)).toBeTruthy()
+    expect(screen.getByText(data.name)).toBeTruthy()
   })
 
   it("should be to able call onPress", () => {

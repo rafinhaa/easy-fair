@@ -1,8 +1,19 @@
 import { useSQLiteContext } from "expo-sqlite"
 import { useCallback } from "react"
 
-import { Fair } from "@/@types/fair"
+import { Fair, FairDatabase } from "@/@types/fair"
 
+const mapper = (fairItem: FairDatabase): Fair => ({
+  id: fairItem.id,
+  title: fairItem.title,
+  userId: fairItem.user_id,
+  date: fairItem?.date || null,
+  completed: fairItem.completed === 1,
+  createdAt: fairItem.created_at,
+  updatedAt: fairItem.updated_at,
+  deletedAt: fairItem.deleted_at,
+  fairItems: fairItem.fair_items_count,
+})
 export const useFairs = () => {
   const database = useSQLiteContext()
 
@@ -47,15 +58,19 @@ export const useFairs = () => {
   const findAll = useCallback(
     async (userId: number) => {
       const statement = await database.prepareAsync(
-        "SELECT * FROM fairs WHERE user_id = $userId AND deleted_at IS NULL ORDER BY created_at DESC",
+        "SELECT f.*, (SELECT COUNT(*) FROM fair_items WHERE fair_id = f.id) AS fair_items_count FROM fairs f WHERE user_id = $userId",
       )
 
       try {
-        const result = await statement.executeAsync<Fair>({ $userId: userId })
+        const result = await statement.executeAsync<FairDatabase>({
+          $userId: userId,
+        })
 
         const fairs = await result.getAllAsync()
 
-        return fairs
+        console.log("here", fairs)
+
+        return fairs.map(mapper)
       } catch (error) {
         throw error
       }
@@ -65,29 +80,28 @@ export const useFairs = () => {
 
   const deleteById = useCallback(
     async (id: number) => {
-      const statement = await database.prepareAsync(
-        "DELETE FROM fairs WHERE id = $id",
-      )
-      try {
-        await statement.executeAsync({ $id: id })
-      } catch (error) {
-        throw error
-      } finally {
-        await statement.finalizeAsync()
-      }
+      await database.withTransactionAsync(async () => {
+        await database.runAsync(`DELETE FROM fair_items WHERE fair_id = $id`, {
+          $id: id,
+        })
+        await database.runAsync(`DELETE FROM fairs WHERE id = $id`, {
+          $id: id,
+        })
+      })
     },
     [database],
   )
 
   const updateById = useCallback(
-    async (id: number, data: Pick<Fair, "title">) => {
+    async (id: number, data: Pick<Fair, "title" | "date">) => {
       const statement = await database.prepareAsync(
-        "UPDATE fairs SET title = $title WHERE id = $id",
+        "UPDATE fairs SET title = $title, date = $date WHERE id = $id",
       )
 
       try {
-        await statement.executeAsync<Fair>({
+        await statement.executeAsync<FairDatabase>({
           $title: data.title,
+          $date: data.date,
           $id: id,
         })
       } catch (error) {

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react"
 import { Pressable } from "react-native"
 import { useStyles } from "react-native-unistyles"
 
@@ -12,21 +11,14 @@ export type CheckProps = {
   onPressCheck: (value: boolean) => void
 }
 
-const Check = (props: CheckProps) => {
-  const [checked, setChecked] = useState(false)
-
+const Check = ({ checked, disabled, onPressCheck }: CheckProps) => {
   const { styles } = useStyles(stylesheet, { checked })
 
   const handlePressCheck = () => {
-    if (props.disabled) return
+    if (disabled) return
 
-    setChecked(!checked)
-    props.onPressCheck(!checked)
+    onPressCheck(!checked)
   }
-
-  useEffect(() => {
-    setChecked(props.checked)
-  }, [props.checked])
 
   return (
     <Pressable

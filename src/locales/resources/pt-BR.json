@@ -4,7 +4,9 @@
     "save": "Salvar",
     "remove": "Remover",
     "delete": "Deletar",
-    "Hello": "Ola"
+    "Hello": "Ola",
+    "items": "{{count}} itens",
+    "item": "{{count}} item"
   },
   "fairCard": {
     "item": "item",
@@ -31,5 +33,12 @@
     "welcome": "Bem-vindo ao FeiraFácil!",
     "description": "Organize suas idas à feira com facilidade. Crie listas de compras, planeje suas feiras e mantenha tudo sob controle. Vamos começar?",
     "createNewList": "Criar nova lista"
+  },
+  "fair": {
+    "addNewItem": "Digite o nome do item...",
+    "deleteList": "Excluir lista",
+    "dateNewList": "Data da compra",
+    "newListName": "Digite o nome da lista...",
+    "newFairTitle": "Nova lista"
   }
 }
