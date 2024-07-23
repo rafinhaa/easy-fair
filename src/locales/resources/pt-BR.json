@@ -32,7 +32,9 @@
   "home": {
     "welcome": "Bem-vindo ao FeiraFácil!",
     "description": "Organize suas idas à feira com facilidade. Crie listas de compras, planeje suas feiras e mantenha tudo sob controle. Vamos começar?",
-    "createNewList": "Criar nova lista"
+    "createNewList": "Criar nova lista",
+    "fairListDelete": "Deseja excluir esta lista?",
+    "fairListDeleteDescription": "Todos os itens serão deletados e esta lista não poderá ser recuperada."
   },
   "fair": {
     "addNewItem": "Digite o nome do item...",

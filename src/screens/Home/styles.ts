@@ -14,4 +14,7 @@ export const stylesheet = createStyleSheet((theme) => ({
   newListText: {
     flex: 1,
   },
+  fairCardContainer: {
+    gap: theme.spacing.xxs,
+  },
 }))

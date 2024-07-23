@@ -8,7 +8,7 @@ const mapper = (fairItem: FairDatabase): Fair => ({
   title: fairItem.title,
   userId: fairItem.user_id,
   date: fairItem?.date || null,
-  completed: fairItem.completed === 1,
+  completedAt: fairItem.completed_at,
   createdAt: fairItem.created_at,
   updatedAt: fairItem.updated_at,
   deletedAt: fairItem.deleted_at,
@@ -68,8 +68,6 @@ export const useFairs = () => {
 
         const fairs = await result.getAllAsync()
 
-        console.log("here", fairs)
-
         return fairs.map(mapper)
       } catch (error) {
         throw error
@@ -93,7 +91,7 @@ export const useFairs = () => {
   )
 
   const updateById = useCallback(
-    async (id: number, data: Pick<Fair, "title" | "date">) => {
+    async (id: number, data: Pick<Fair, "title" | "date" | "completedAt">) => {
       const statement = await database.prepareAsync(
         "UPDATE fairs SET title = $title, date = $date WHERE id = $id",
       )
@@ -113,11 +111,32 @@ export const useFairs = () => {
     [database],
   )
 
+  const setCompleted = useCallback(
+    async (id: number, data: Pick<Fair, "completedAt">) => {
+      const statement = await database.prepareAsync(
+        "UPDATE fairs SET completed_at = $completedAt, date = $date WHERE id = $id",
+      )
+
+      try {
+        await statement.executeAsync<FairDatabase>({
+          $completedAt: data.completedAt,
+          $id: id,
+        })
+      } catch (error) {
+        throw error
+      } finally {
+        await statement.finalizeAsync()
+      }
+    },
+    [database],
+  )
+
   return {
     create,
     findById,
     findAll,
     deleteById,
     updateById,
+    setCompleted,
   }
 }

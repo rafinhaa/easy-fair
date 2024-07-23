@@ -3,7 +3,7 @@ export interface Fair {
   title: string
   userId: number
   date?: string | null | undefined
-  completed: boolean
+  completedAt?: string | null | undefined
   createdAt: string
   updatedAt: string | null
   deletedAt: string | null
@@ -15,7 +15,7 @@ export interface FairDatabase {
   title: string
   user_id: number
   date: string
-  completed: number
+  completed_at: string | null
   created_at: string
   updated_at: string | null
   deleted_at: string | null

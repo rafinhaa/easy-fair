@@ -16,13 +16,18 @@ export const stylesheet = createStyleSheet((theme) => ({
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
   },
   calendar: {
     flexDirection: "row",
     alignItems: "center",
     gap: theme.spacing.xxs,
   },
-  icon: {
-    paddingHorizontal: theme.spacing.xs,
+  iconComplete: {
+    paddingRight: theme.spacing.sm,
+  },
+  iconDelete: {
+    paddingRight: theme.spacing.xxs,
+    paddingLeft: theme.spacing.sm,
   },
 }))
