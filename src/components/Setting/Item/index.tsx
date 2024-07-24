@@ -24,28 +24,22 @@ export type SettingsIconProps = {
 const SettingsIcon = ({ label, icon, ...props }: SettingsIconProps) => {
   const { styles } = useStyles(stylesheet)
 
-  const RenderContent: React.FC = () => {
-    if (props.type === "action") {
-      return <>{props.action}</>
-    } else {
-      return (
-        <Icon
-          name="chevron-right"
-          size="lg"
-          variant="secondary"
-          onPress={props.onDefaultAction}
-        />
-      )
-    }
-  }
-
   return (
     <View style={styles.container}>
       {icon && <Icon name={icon} size="lg" />}
       <Typography.Text style={styles.text} size="xs">
         {label}
       </Typography.Text>
-      <RenderContent />
+      {props.type === "action" ? (
+        props.action
+      ) : (
+        <Icon
+          name="chevron-right"
+          size="lg"
+          variant="secondary"
+          onPress={props?.onDefaultAction}
+        />
+      )}
     </View>
   )
 }

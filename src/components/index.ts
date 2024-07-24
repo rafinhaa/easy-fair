@@ -19,3 +19,4 @@ export {
 } from "@/components/AlertDialog"
 export { default as Spacer } from "./Spacer"
 export { default as Divider } from "./Divider"
+export { default as Toggle, ToggleRef } from "./Toggle"
