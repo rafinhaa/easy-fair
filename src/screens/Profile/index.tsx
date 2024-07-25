@@ -2,7 +2,7 @@ import { useNavigation } from "@react-navigation/native"
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { SafeAreaView } from "react-native-safe-area-context"
-import { useStyles } from "react-native-unistyles"
+import { UnistylesRuntime, useStyles } from "react-native-unistyles"
 
 import { Button, Setting, Spacer, Toggle, Typography } from "@/components"
 import { AppRoutesScreenNavigationProp } from "@/routes"
@@ -14,7 +14,9 @@ import { stylesheet } from "./styles"
 export type ProfileProps = {}
 
 const Profile = (_props: ProfileProps) => {
-  const [darkMode, setDarkMode] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    return UnistylesRuntime.themeName === "dark"
+  })
 
   const { replace } = useNavigation<AppRoutesScreenNavigationProp>()
   const { styles } = useStyles(stylesheet)
@@ -23,8 +25,15 @@ const Profile = (_props: ProfileProps) => {
 
   const handlePressLogout = async () => {
     await storage.removeItem("USER_ID")
-
     replace("Users")
+  }
+
+  const handlePressChangeTheme = async (darkMode: boolean) => {
+    UnistylesRuntime.setTheme(darkMode ? "dark" : "light")
+
+    await storage.setItem<boolean>("DARK_MODE", darkMode)
+
+    setIsDarkMode(darkMode)
   }
 
   return (
@@ -37,7 +46,9 @@ const Profile = (_props: ProfileProps) => {
           label={t("profile.darkMode")}
           type="action"
           icon="moon-waning-crescent"
-          action={<Toggle value={darkMode} onValueChange={setDarkMode} />}
+          action={
+            <Toggle value={isDarkMode} onValueChange={handlePressChangeTheme} />
+          }
         />
       </Setting.Section>
       <Spacer />

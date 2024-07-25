@@ -6,5 +6,5 @@ UnistylesRegistry.addThemes({
   light: lightTheme,
   dark: darkTheme,
 }).addConfig({
-  adaptiveThemes: true,
+  initialTheme: "dark",
 })
