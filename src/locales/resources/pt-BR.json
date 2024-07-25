@@ -42,5 +42,10 @@
     "dateNewList": "Data da compra",
     "newListName": "Digite o nome da lista...",
     "newFairTitle": "Nova lista"
+  },
+  "profile": {
+    "theme": "Tema",
+    "darkMode": "Modo escuro",
+    "logout": "Sair"
   }
 }
